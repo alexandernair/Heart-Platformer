@@ -87,9 +87,13 @@ script = ExtResource("1_52kiv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ea73d")
 animation = &"idle"
-frame_progress = 0.60858
+frame_progress = 0.189554
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_we6tl")
+
+[node name="CoyoteJumpTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
