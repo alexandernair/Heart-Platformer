@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://byo57tjd8bp2a"]
+[gd_scene load_steps=15 format=3 uid="uid://byo57tjd8bp2a"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_52kiv"]
 [ext_resource type="Texture2D" uid="uid://ird2x4aed44t" path="res://player.png" id="2_4guit"]
+[ext_resource type="Resource" uid="uid://mos4jxevt01i" path="res://DefaultDataMovement.tres" id="2_xp2ki"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bvali"]
 atlas = ExtResource("2_4guit")
@@ -80,14 +81,19 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_we6tl"]
 size = Vector2(6, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sg76y"]
+size = Vector2(6, 13)
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
-floor_snap_length = 2.0
+collision_layer = 2
+floor_snap_length = 3.0
 script = ExtResource("1_52kiv")
+movement_data = ExtResource("2_xp2ki")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ea73d")
 animation = &"idle"
-frame_progress = 0.189554
+frame_progress = 0.4253
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -95,5 +101,19 @@ position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_we6tl")
 
 [node name="CoyoteJumpTimer" type="Timer" parent="."]
-wait_time = 0.15
+wait_time = 0.1
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -20)
+position_smoothing_enabled = true
+
+[node name="HazardDetector" type="Area2D" parent="."]
+visible = false
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardDetector"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_sg76y")
+
+[connection signal="area_entered" from="HazardDetector" to="." method="_on_hazard_detector_area_entered"]
