@@ -10,14 +10,15 @@ config_version=5
 
 [application]
 
-config/name="Heart Platformer"
-run/main_scene="res://world.tscn"
+config/name="Heart-platformer"
+run/main_scene="res://level_one.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Events="*res://Events.gd"
+LevelTransition="*res://level_transition.tscn"
 
 [display]
 
@@ -26,23 +27,7 @@ window/size/viewport_height=180
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
-window/decals/filter=3
-
-[editor]
-
-version_control/plugin_name="GitPlugin"
-version_control/autoload_on_startup=true
-
-[layer_names]
-
-2d_physics/layer_1="World"
-2d_physics/layer_2="Player"
-2d_physics/layer_3="Hazards"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
-textures/default_filters/use_nearest_mipmap_filter=true
-textures/decals/filter=2

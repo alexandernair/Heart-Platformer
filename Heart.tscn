@@ -6,12 +6,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_kftsh"]
 radius = 5.0
 
-[node name="Heart" type="Area2D" groups=["Hearts"]]
+[node name="Heart" type="Area2D"]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_slass")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Hearts"]]
 texture = ExtResource("1_4m2f2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
