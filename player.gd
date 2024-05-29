@@ -41,12 +41,12 @@ func apply_gravity(delta):
 func handel_jump():
 	if is_on_floor(): air_jump = true
 	if is_on_floor() or coyote_jump_timer.time_left > 0.0:
-		if Input.is_action_just_pressed("ui_up"):
+		if Input.is_action_just_pressed("jump"):
 			velocity.y = movement_data.jump_velocity
 	elif not is_on_floor():
-		if Input.is_action_just_released("ui_up") and velocity.y < movement_data.jump_velocity/2:
+		if Input.is_action_just_released("jump") and velocity.y < movement_data.jump_velocity/2:
 			velocity.y = movement_data.jump_velocity * 1/2
-		if Input.is_action_just_pressed("ui_up") and air_jump == true and not wall_jumped:
+		if Input.is_action_just_pressed("jump") and air_jump == true and not wall_jumped:
 			velocity.y = movement_data.jump_velocity * .8
 			air_jump = false
 			
@@ -54,7 +54,7 @@ func handel_wall_jump():
 	if not is_on_wall_only():
 		return;
 	var wall_normal = get_wall_normal();
-	if Input.is_action_just_pressed("ui_up") :
+	if Input.is_action_just_pressed("jump") :
 		velocity.x = wall_normal.x * movement_data.speed
 		velocity.y = movement_data.jump_velocity
 		wall_jumped = true
